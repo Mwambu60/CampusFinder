@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CampusFinder | Student homes in Zambia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo" href="#home"><span class="mark">⌂</span> Campus<span>Finder</span></a>
+    <nav><a href="#home">Home</a><a href="#homes">Find a home</a><a href="#how">How it works</a><a
+        href="#list-home">List a property</a></nav>
+    <a class="nav-btn" href="#homes">Explore rentals</a>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="shade"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">STUDENT LIVING, MADE SIMPLE</p>
+        <h1>Find a place to call home while you study.</h1>
+        <p class="lead">Discover student-friendly rooms, bedsitters and apartments close to campuses across Zambia.</p>
+        <div class="actions"><a class="btn primary" href="#homes">Browse accommodation</a><a class="btn ghost"
+            href="#how">How it works</a></div>
+        <p class="trust">✓ Clear monthly prices &nbsp;&nbsp; ✓ Search by campus &nbsp;&nbsp; ✓ Student-focused homes</p>
+      </div>
+    </section>
+    <section class="search-wrap">
+      <form id="filters" class="search">
+        <label>Location or campus<input id="location" placeholder="e.g. Lusaka, UNZA"></label>
+        <label>Minimum rent (ZMW)<input id="min" type="number" min="0" placeholder="1000"></label>
+        <label>Maximum rent (ZMW)<input id="max" type="number" min="0" placeholder="5000"></label>
+        <label>Property type<select id="type">
+            <option value="">All types</option>
+            <option>Room</option>
+            <option>Bedsitter</option>
+            <option>Apartment</option>
+            <option>Shared house</option>
+          </select></label>
+        <button class="btn primary" type="submit">Search homes</button>
+      </form>
+      <p id="connection" class="connection">Connecting to the CampusFinder Java service…</p>
+    </section>
+    <section class="section" id="homes">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow blue">EXPLORE ACCOMMODATION</p>
+          <h2>Featured student homes</h2>
+          <p class="muted">Compare prices, locations and property details before arranging a viewing.</p>
+        </div><span id="count" class="muted"></span>
+      </div>
+      <div id="cards" class="cards">
+        <p class="empty">Loading accommodation…</p>
+      </div>
+      <p class="disclaimer">Demo listings and prices are illustrative, not verified vacancies. Confirm availability,
+        utilities, lease terms and property ownership before paying.</p>
+    </section>
+    <section class="how section" id="how">
+      <div class="center">
+        <p class="eyebrow blue">A SIMPLE WAY TO FIND HOME</p>
+        <h2>Three steps to your next place</h2>
+      </div>
+      <div class="steps">
+        <article><b>01</b>
+          <h3>Set your budget</h3>
+          <p>Search by campus or neighbourhood and enter the monthly rent you can afford.</p>
+        </article>
+        <article><b>02</b>
+          <h3>Compare homes</h3>
+          <p>Review property types, descriptions and ZMW prices to find a good match.</p>
+        </article>
+        <article><b>03</b>
+          <h3>Arrange a viewing</h3>
+          <p>Contact the landlord, ask questions and inspect the property before making payment.</p>
+        </article>
+      </div>
+    </section>
+    <section class="landlord section" id="list-home">
+      <div>
+        <p class="eyebrow blue">FOR LANDLORDS</p>
+        <h2>Have a place students can call home?</h2>
+        <p class="muted">Submit your accommodation details and add it to the current demo listings.</p>
+      </div>
+      <form id="new-listing" class="landlord-form">
+        <label>Landlord name<input name="landlordName" required placeholder="Your name"></label>
+        <label>Property title<input name="title" required placeholder="e.g. Neat bedsitter near UNZA"></label>
+        <label>Location / campus<input name="location" required placeholder="e.g. Lusaka, UNZA"></label>
+        <label>Monthly rent (ZMW)<input name="price" type="number" min="1" required placeholder="2500"></label>
+        <label>Property type<select name="type">
+            <option>Room</option>
+            <option>Bedsitter</option>
+            <option>Apartment</option>
+            <option>Shared house</option>
+          </select></label>
+        <label>Contact number<input name="phone" required placeholder="097XXXXXXX"></label>
+        <label class="full">Short description<textarea name="description" rows="3" required
+            placeholder="Describe facilities, security and distance to campus"></textarea></label>
+        <button class="btn primary full" type="submit">Submit property</button>
+        <p id="form-message" class="full" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><a class="logo light" href="#home">⌂ Campus<span>Finder</span></a>
+    <p>Helping students find a place to belong.</p><small>© 2026 CampusFinder · Student accommodation demo</small>
+  </footer>
+  <script src="app.js"></script>
+</body>
+
+</html>
