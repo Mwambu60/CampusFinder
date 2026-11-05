@@ -92,3 +92,10 @@ This is a teaching/demo starter, not a production rental platform:
 **Frontend says Java service is offline:** Keep the Java server terminal running, serve the page using Python's local web server, and open `http://localhost:5500` (not a `file://` URL).
 
 **Port 8080 already in use:** Stop the other service or change the port in `CampusFinderServer.java` and the `API` constant in `app.js` to the same value.
+| Full Name | Student Number |
+|-----------|----------------|
+| Katendi Kamenga | 2410432 |
+| Racheal Chilufya | 2410503 |
+| Mwambu Austin Mulonda | 2410275 |
+| Joseph Chilando | 2410127 |
+| John Chirwa | 2410663 |
