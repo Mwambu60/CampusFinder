@@ -2,6 +2,11 @@
 
 A responsive student accommodation finder for Zambia, with ZMW monthly prices, sample property cards, search filters, a landlord listing form and a small Java HTTP API.
 
+
+## The Problem
+
+Students in Zambia often struggle to find safe, affordable accommodation near campus. Listings are scattered across word of mouth, notice boards and social media, so students waste time and money searching, and landlords struggle to reach students who need rooms.
+
 ## Requirements
 - Java JDK 17 or newer (includes `javac`).
 - Python 3 for serving the frontend locally (or another static web server).
