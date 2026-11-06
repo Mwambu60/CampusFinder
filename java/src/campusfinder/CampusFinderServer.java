@@ -14,12 +14,31 @@ public class CampusFinderServer {
     private static int nextId=1;
     public static void main(String[] args)throws IOException{
         seed();
-        HttpServer server=HttpServer.create(new InetSocketAddress(8080),0);
+        demonstrateOopConcepts();
+        int port = Integer.parseInt(System.getProperty("campusfinder.port", "8080"));
+        HttpServer server=HttpServer.create(new InetSocketAddress(port),0);
         server.createContext("/api/health",e->send(e,200,"{\"status\":\"ok\"}"));
         server.createContext("/api/listings",CampusFinderServer::handleListings);
         server.setExecutor(Executors.newCachedThreadPool());server.start();
-        System.out.println("CampusFinder API: http://localhost:8080  (Ctrl+C to stop)");
+        System.out.println("CampusFinder API: http://localhost:" + port + "  (Ctrl+C to stop)");
     }
+    /**
+     * A single method accepts the abstract parent type. The overridden methods
+     * that run depend on the actual object (StudentUser or LandlordUser).
+     */
+    private static void printUserProfile(User user) {
+        System.out.println(user.getProfileSummary());
+    }
+
+    /** Small startup demonstration; it does not create database accounts. */
+    private static void demonstrateOopConcepts() {
+        User student = new StudentUser("Demo Student", "student@example.com");
+        User landlord = new LandlordUser("Demo Landlord", "0977000000");
+        System.out.println("OOP demonstration (same parent type, different subclass behaviour):");
+        printUserProfile(student);
+        printUserProfile(landlord);
+    }
+
     private static void seed(){
         add("Bright room near UNZA","Lusaka · UNZA","Room",1800,"Neat student room with shared kitchen, water and electricity access.","Martha Banda","0977000101");
         add("Chilenje student bedsitter","Lusaka · Chilenje","Bedsitter",2800,"Self-contained bedsitter with private bathroom, secure yard and nearby bus routes.","Peter Zulu","0977000102");
@@ -45,7 +64,7 @@ public class CampusFinderServer {
             String name=f.getOrDefault("landlordName","").trim(),title=f.getOrDefault("title","").trim(),loc=f.getOrDefault("location","").trim(),desc=f.getOrDefault("description","").trim(),phone=f.getOrDefault("phone","").trim(),type=f.getOrDefault("type","Room");
             int price=number(f.get("price"));
             if(name.isEmpty()||title.isEmpty()||loc.isEmpty()||desc.isEmpty()||phone.isEmpty()||price<1){send(e,400,"{\"error\":\"Complete all fields and enter a valid monthly rent.\"}");return;}
-            synchronized(CampusFinderServer.class){LandlordUser landlord=new LandlordUser(name,phone);Listing item=new Listing(nextId++,title,loc,type,price,desc,name,phone);landlord.addListing(item);landlords.add(landlord);listings.add(item);send(e,201,item.toJson());}return;
+            synchronized(CampusFinderServer.class){LandlordUser landlord=new LandlordUser(name,phone);printUserProfile(landlord);Listing item=new Listing(nextId++,title,loc,type,price,desc,name,phone);landlord.addListing(item);landlords.add(landlord);listings.add(item);send(e,201,item.toJson());}return;
         }
         send(e,405,"{\"error\":\"Method not allowed\"}");
     }
